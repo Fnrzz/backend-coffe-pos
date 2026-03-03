@@ -6,9 +6,10 @@ import categoryRouter from "./routes/categoryRouter";
 import productRouter from "./routes/productRouter";
 import orderRouter from "./routes/orderRouter";
 import midtransRouter from "./routes/midtransRouter";
+import { swaggerDocs } from "./utils/swagger";
 
 const app = express();
-const port = process.env.PORT || 3001;
+const port = Number(process.env.PORT) || 3001;
 
 app.use(
   cors({
@@ -39,4 +40,5 @@ router.use("/midtrans", midtransRouter);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
+  swaggerDocs(app, port);
 });
